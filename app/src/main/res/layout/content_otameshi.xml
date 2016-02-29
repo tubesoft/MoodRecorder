@@ -9,22 +9,26 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.tubesoft.moodrecorder.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context="com.tubesoft.moodRecorder.OtameshiActivity"
+    tools:showIn="@layout/activity_otameshi">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="もどる"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:nestedScrollingEnabled="true"
+        android:id="@+id/btnToMain"
+        android:onClick="onClick" />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ハローワールド\nこれで環境は整ったかと思います！\n頑張っていきましょう！！"
-        android:id="@+id/textView2" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="次へ"
-        android:id="@+id/btnToOtameshi"
-        android:onClick="onClick"
-        android:layout_below="@+id/textView2"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="新しい画面お試し！"
+        android:id="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="143dp"
-        android:nestedScrollingEnabled="true" />
+        android:layout_marginBottom="81dp" />
 </RelativeLayout>
