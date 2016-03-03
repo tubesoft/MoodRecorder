@@ -19,10 +19,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.tubesoft.moodrecorder.OtameshiActivity"
+            android:name=".OtameshiActivity"
             android:label="@string/title_activity_otameshi"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MeasurementInstructionActivity"
+            android:label="@string/title_activity_measurement_instruction"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BrowsingHistoryActivity"
+            android:label="@string/title_activity_browsing_history"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PreferenceActivity"
+            android:label="@string/title_activity_preference"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ResultActivity"
+            android:label="@string/title_activity_result"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MesurementActivity"
+            android:label="@string/title_activity_mesurement"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
