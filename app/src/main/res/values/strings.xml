@@ -16,5 +16,4 @@
     <string name="title_pref_sampling_rate">Sampling Rate</string>
     <string name="summary_pref_sampling_rate">Choose the following rates.</string>
     <string name="summary_pref_is_tracked">Draw a track while measurements.</string>
-    <string name="title_activity_preference_app">PreferenceAppActivity</string>
 </resources>
