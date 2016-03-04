@@ -4,7 +4,16 @@
     <string name="title_activity_otameshi">お試し</string>
     <string name="title_activity_measurement_instruction">測定についての説明</string>
     <string name="title_activity_browsing_history">記録閲覧</string>
-    <string name="title_activity_preference">設定</string>
+    <string name="title_activity_preferences_app">設定</string>
     <string name="title_activity_result">測定結果</string>
     <string name="title_activity_measurement">測定</string>
+    <string name="start_measurement">測定開始</string>
+    <string name="minute">秒</string>
+    <string name="second">分</string>
+
+    <string name="title_pref_is_tracked">軌跡の表示</string>
+    <string name="title_pref_sampling_rate">サンプリングレート</string>
+    <string name="summary_pref_sampling_rate">レートを選択してください。</string>
+    <string name="summary_pref_is_tracked">測定中に軌跡を表示します。</string>
+
 </resources>

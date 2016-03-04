@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+      <!-- リストによる設定 -->
+    　<ListPreference
+        android:key="pref_sampling_rate"
+        android:title="@string/title_pref_sampling_rate"
+        android:summary="@string/summary_pref_sampling_rate"
+        android:entries="@array/entries_pref_sampling_rate"
+        android:entryValues="@array/entries_pref_sampling_rate"
+        />
+　　　<!-- チェックボックスによる設定 -->
+　　　<CheckBoxPreference
+        android:key="pref_is_tracked"
+        android:title="@string/title_pref_is_tracked"
+        android:summary="@string/summary_pref_is_tracked"
+        />
+</PreferenceScreen>

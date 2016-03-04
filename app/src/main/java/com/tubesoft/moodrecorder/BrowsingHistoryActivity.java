@@ -35,8 +35,15 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_browsing_history);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //ツールバーに戻るボタンを設置
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        //リストビューを設定
         ListView listView = (ListView) findViewById(R.id.listView);
-
         try {
             loadCsv();
         } catch (IOException e) {
@@ -74,6 +81,7 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
         });
     }
 
+    //assetsフォルダ内のtxtファイルを読み込むメソッド
     private void loadCsv() throws IOException {
         String path = "SavedRecord.txt";
         InputStream is = this.getAssets().open(path);
@@ -104,7 +112,7 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.delete_chosen:
+            case R.id.delete_chosen: //削除ボタンが押されたとき
                 String msg = "選択削除押下！";
                 Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                 return true;

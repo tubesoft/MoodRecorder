@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.tubesoft.moodrecorder.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/preferences"
+        android:icon="@drawable/ic_action_settings_w"
         android:orderInCategory="100"
-        android:title="Settings"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom|withText"
+        android:title="@string/title_activity_preferences_app"
+        />
 </menu>

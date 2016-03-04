@@ -42,6 +42,15 @@ public class MeasurementInstructionActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //ツールバーに戻るボタンを設置
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -50,15 +59,10 @@ public class MeasurementInstructionActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        //メインアクティビティから設定した時間を取得→たぶんこれはスタートボタン押下時にいれるのがいいかも。
+//        MeasurementTime time = (MeasurementTime)getIntent().getSerializableExtra("measurement_time");
+//        int min = time.getTime(MeasurementTime.times.MIN);
+//        int sec = time.getTime(MeasurementTime.times.SEC);
 
     }
 

@@ -27,10 +27,6 @@
             android:label="@string/title_activity_browsing_history"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".PreferenceActivity"
-            android:label="@string/title_activity_preference"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".ResultActivity"
             android:label="@string/title_activity_result"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -41,6 +37,10 @@
         <activity
             android:name=".MeasurementInstructionActivity"
             android:label="@string/title_activity_measurement_instruction"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PreferencesAppActivity"
+            android:label="@string/title_activity_preferences_app"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

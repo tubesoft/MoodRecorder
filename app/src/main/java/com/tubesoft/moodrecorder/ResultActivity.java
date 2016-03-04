@@ -43,7 +43,17 @@ public class ResultActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
+
+        //ツールバーに戻るボタンを設置(→ここでは履歴から来た場合と測定から直接来た場合で分ける)
+//        toolbar.setNavigationIcon(R.drawable.ic_action_back_w);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
+
+    // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
