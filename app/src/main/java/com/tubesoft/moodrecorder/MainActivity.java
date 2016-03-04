@@ -1,14 +1,14 @@
 package com.tubesoft.moodrecorder;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.preference.Preference;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
+import android.widget.NumberPicker;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,14 +19,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        NumberPicker npSec = (NumberPicker)findViewById(R.id.numPickerSec);
+        NumberPicker npMin = (NumberPicker)findViewById(R.id.numPickerMin);
+        npSec.setMaxValue(59);
+        npSec.setMinValue(1);
+        npMin.setMaxValue(30);
+        npMin.setMinValue(0);
     }
 
     @Override
@@ -54,8 +52,20 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View view){
         switch (view.getId()){
             case R.id.btnToOtameshi:
-                Intent intent = new Intent(this, OtameshiActivity.class);
-                startActivity(intent);
+                Intent intentOtameshi = new Intent(this, OtameshiActivity.class);
+                startActivity(intentOtameshi);
+                break;
+            case R.id.btnMeasurement:
+                Intent intentMeasurement = new Intent(this, MeasurementActivity.class);
+                startActivity(intentMeasurement);
+                break;
+            case R.id.btnHistory:
+                Intent intentHistory = new Intent(this, BrowsingHistoryActivity.class);
+                startActivity(intentHistory);
+                break;
+            case R.id.btnPreference:
+                Intent intentPreference = new Intent(this, PreferenceActivity.class);
+                startActivity(intentPreference);
                 break;
         }
     }

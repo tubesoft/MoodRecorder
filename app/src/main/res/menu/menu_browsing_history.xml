@@ -1,10 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.tubesoft.moodrecorder.ResultActivity">
+    tools:context="com.tubesoft.moodrecorder.BrowsingHistoryActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/delete_chosen"
         android:orderInCategory="100"
-        android:title="Settings"
+        android:title="選択削除"
         app:showAsAction="never" />
 </menu>

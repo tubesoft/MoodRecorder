@@ -23,10 +23,6 @@
             android:label="@string/title_activity_otameshi"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MeasurementInstructionActivity"
-            android:label="@string/title_activity_measurement_instruction"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".BrowsingHistoryActivity"
             android:label="@string/title_activity_browsing_history"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -39,9 +35,13 @@
             android:label="@string/title_activity_result"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MesurementActivity"
-            android:label="@string/title_activity_mesurement"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".MeasurementActivity"
+            android:label="@string/title_activity_measurement"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MeasurementInstructionActivity"
+            android:label="@string/title_activity_measurement_instruction"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

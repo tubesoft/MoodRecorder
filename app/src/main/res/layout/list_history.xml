@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:padding="16dp">
+
+<GridLayout
+    android:id="@+id/gridLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:columnCount="3"
+    android:rowCount="2" >
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_column="0"
+        android:layout_rowSpan="2"
+        android:layout_gravity="center_vertical"
+        android:textSize="25sp"
+        />
+    <!--android:text="日付"-->
+
+    <TextView
+        android:id="@+id/samplingRate"
+        android:layout_column="2"
+        android:layout_row="0"
+        />
+    <!--android:text="サンプリングレート"-->
+
+    <TextView
+        android:id="@+id/isTracked"
+        android:layout_column="2"
+        android:layout_row="1"
+        />
+    <!--android:text="軌跡あり"-->
+
+</GridLayout>
+
+</LinearLayout>
+
+

@@ -1,11 +1,10 @@
 <resources>
-    <string name="app_name">MoodRecorder</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_otameshi">OtameshiActivity</string>
-    <string name="title_activity_measurement_instruction">MeasurementInstructionActivity</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-    <string name="title_activity_browsing_history">BrowsingHistoryActivity</string>
-    <string name="title_activity_preference">PreferenceActivity</string>
-    <string name="title_activity_result">ResultActivity</string>
-    <string name="title_activity_mesurement">MesurementActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string><!-->インストラクション画面のお試し文字列<-->
+    <string name="app_name">Mood Recorder</string>
+    <string name="title_activity_otameshi">Otameshi</string>
+    <string name="title_activity_measurement_instruction">Measurement Instruction</string>
+    <string name="title_activity_browsing_history">History</string>
+    <string name="title_activity_preference">Preference</string>
+    <string name="title_activity_result">Results</string>
+    <string name="title_activity_measurement">Measurement</string>
 </resources>
