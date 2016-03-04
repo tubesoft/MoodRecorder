@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentOtameshi);
                 break;
             case R.id.btnMeasurement:
-                Intent intentMeasurement = new Intent(this, MeasurementActivity.class);
+                Intent intentMeasurement = new Intent(this, MeasurementInstructionActivity.class);
                 startActivity(intentMeasurement);
                 break;
             case R.id.btnHistory:
