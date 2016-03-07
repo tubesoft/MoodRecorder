@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ハローワールド\nこれで環境は整ったかと思います！\n頑張っていきましょう！！"
+        android:text="ハローワールド\nたかともくんどうもありがとう！\n楽しんでいこう！"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
