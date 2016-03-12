@@ -1,5 +1,6 @@
 package com.tubesoft.moodrecorder;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +23,7 @@ import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity {
 
+    private boolean isFromHistory = false;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -44,14 +47,24 @@ public class ResultActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //ツールバーに戻るボタンを設置(→ここでは履歴から来た場合と測定から直接来た場合で分ける)
-//        toolbar.setNavigationIcon(R.drawable.ic_action_back_w);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
+        Intent intent = getIntent();
+        int listId = intent.getIntExtra("list_id", -1);
+        int listSize = intent.getIntExtra("list_size",0);
+        isFromHistory = intent.getBooleanExtra("is_from_history", false);
+
+        //ツールバーに戻るボタンを設置(→ここでは履歴から来た場合と測定から直接来た場合で分ける。物理ボタンの戻るも効かないようにする必要あり。)
+        if (isFromHistory){
+            toolbar.setNavigationIcon(R.drawable.ic_action_back_w);
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+        } else {
+            //測定から来た場合には、リストの最後に保存されるので、listIdを末尾に設定。
+            listId = listSize - 1;
+        }
 
     // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -64,14 +77,6 @@ public class ResultActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
     }
 
@@ -91,7 +96,8 @@ public class ResultActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.done) {
+            startActivity(new Intent(this, MainActivity.class));
             return true;
         }
 
@@ -159,6 +165,7 @@ public class ResultActivity extends AppCompatActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
+                //文字列は後でバイリンガル設定しておくこと。
                 case 0:
                     return "収束座標";
                 case 1:
@@ -168,5 +175,20 @@ public class ResultActivity extends AppCompatActivity {
             }
             return null;
         }
+    }
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getAction()==KeyEvent.ACTION_DOWN) {
+                switch (event.getKeyCode()) {
+                    case KeyEvent.KEYCODE_BACK:
+                        //履歴から来たときには戻れる。測定から直接来たときには戻れない。
+                        if (!isFromHistory) {
+                            finish();
+                        } else {
+                            return true;
+                        }
+                }
+        }
+        return super.dispatchKeyEvent(event);
     }
 }

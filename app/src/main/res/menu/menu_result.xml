@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.tubesoft.moodrecorder.ResultActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/done"
+        android:icon="@drawable/ic_action_accept_w"
         android:orderInCategory="100"
-        android:title="Settings"
-        app:showAsAction="never" />
+        android:title="@string/done"
+        app:showAsAction="ifRoom|withText" />
 </menu>

@@ -3,8 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.tubesoft.moodrecorder.BrowsingHistoryActivity">
     <item
-        android:id="@+id/delete_chosen"
+        android:id="@+id/delete_confirm"
+        android:icon="@drawable/ic_action_discard_w"
         android:orderInCategory="100"
-        android:title="選択削除"
-        app:showAsAction="never" />
+        android:title="@string/execute_delete"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/delete_chosen"
+        android:icon="@drawable/ic_action_edit_w"
+        android:orderInCategory="100"
+        android:title="@string/choose_delete"
+        app:showAsAction="ifRoom|withText"
+        />
 </menu>

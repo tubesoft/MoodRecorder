@@ -16,4 +16,16 @@
     <string name="title_pref_sampling_rate">Sampling Rate</string>
     <string name="summary_pref_sampling_rate">Choose the following rates.</string>
     <string name="summary_pref_is_tracked">Draw a track while measurements.</string>
+    <string name="comfortable">Comfortable</string>
+    <string name="uncomfortable">Uncomfortable</string>
+    <string name="obscure">Obscure</string>
+    <string name="clear">Clear</string>
+
+    <string name="no_data">NO DATA</string>
+    <string name="with_track">With Track</string>
+    <string name="without_track">Without Track</string>
+
+    <string name="execute_delete">Delete</string>
+    <string name="choose_delete">Delete Selected</string>
+    <string name="done">Done</string>
 </resources>

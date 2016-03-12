@@ -16,4 +16,18 @@
     <string name="summary_pref_sampling_rate">レートを選択してください。</string>
     <string name="summary_pref_is_tracked">測定中に軌跡を表示します。</string>
 
+    <string name="comfortable">快である</string>
+    <string name="uncomfortable">不快である</string>
+    <string name="obscure">ぼんやりしている</string>
+    <string name="clear">はっきりしている</string>
+
+    <string name="no_data">データがありません。</string>
+    <string name="with_track">軌跡あり</string>
+    <string name="without_track">軌跡なし</string>
+
+    <string name="execute_delete">削除実行</string>
+    <string name="choose_delete">選択削除</string>
+    <string name="done">完了</string>
+
+
 </resources>

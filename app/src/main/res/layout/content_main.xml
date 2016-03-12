@@ -89,4 +89,14 @@
         android:layout_toRightOf="@+id/textView4"
         android:layout_toEndOf="@+id/textView4" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="直に計測へ（臨時）"
+        android:id="@+id/btnDirect"
+        android:onClick="onClick"
+        android:layout_below="@+id/btnHistory"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp" />
+
 </RelativeLayout>

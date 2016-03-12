@@ -10,31 +10,43 @@ android:padding="16dp">
     android:id="@+id/gridLayout1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:columnCount="3"
-    android:rowCount="2" >
+    android:columnCount="5"
+    android:rowCount="3" >
 
     <TextView
         android:id="@+id/time"
         android:layout_column="0"
-        android:layout_rowSpan="2"
+        android:layout_rowSpan="3"
         android:layout_gravity="center_vertical"
         android:textSize="25sp"
-        />
+        android:layout_row="0" />
     <!--android:text="日付"-->
 
     <TextView
         android:id="@+id/samplingRate"
-        android:layout_column="2"
+        android:layout_column="3"
         android:layout_row="0"
+        android:layout_gravity="right"
         />
     <!--android:text="サンプリングレート"-->
 
     <TextView
         android:id="@+id/isTracked"
-        android:layout_column="2"
-        android:layout_row="1"
+        android:layout_column="3"
+        android:layout_row="2"
+        android:layout_gravity="right"
         />
     <!--android:text="軌跡あり"-->
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowSpan="3"
+        android:layout_column="4"
+        android:clickable="false"
+        android:focusable="false"
+        />
 
 </GridLayout>
 

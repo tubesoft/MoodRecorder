@@ -61,13 +61,16 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnMeasurement:
                 //ナンバーピッカーの値を取得
                 MeasurementTime time = new MeasurementTime(npMin.getValue(), npSec.getValue());
-                Intent intentMeasurement = new Intent(this, MeasurementInstructionActivity.class);
-                intentMeasurement.putExtra("measurement_time", time);
-                startActivity(intentMeasurement);
+                Intent intentMeasurementInstruction = new Intent(this, MeasurementInstructionActivity.class);
+                intentMeasurementInstruction.putExtra("measurement_time", time);
+                startActivity(intentMeasurementInstruction);
                 break;
             case R.id.btnHistory:
                 startActivity(new Intent(this, BrowsingHistoryActivity.class));
                 break;
+            case R.id.btnDirect:
+                System.out.println("PRESSED");
+                startActivity(new Intent(this, MeasurementActivity.class));
         }
     }
 }
