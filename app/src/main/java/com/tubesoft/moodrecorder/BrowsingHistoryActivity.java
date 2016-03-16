@@ -43,7 +43,7 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
     private boolean isBtnDeleteSelected = false;
     private MenuItem dltChn;
     private MenuItem dltCfm;
-    private String path = "SavedRecord.txt";
+    private String path;
 
 
 
@@ -61,7 +61,7 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
             }
         });
 
-
+        path = getString(R.string.record_path);
         //リストビューを設定
         listView = (ListView) findViewById(R.id.list);
         try {

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- アクティビティタイトル-->
     <string name="app_name">気分状態測定アプリ</string>
     <string name="title_activity_otameshi">お試し</string>
     <string name="title_activity_measurement_instruction">測定についての説明</string>
@@ -7,27 +9,36 @@
     <string name="title_activity_preferences_app">設定</string>
     <string name="title_activity_result">測定結果</string>
     <string name="title_activity_measurement">測定</string>
+
+    <!-- トップ画面-->
     <string name="start_measurement">測定開始</string>
     <string name="minute">秒</string>
     <string name="second">分</string>
 
+    <!-- 設定画面-->
     <string name="title_pref_is_tracked">軌跡の表示</string>
     <string name="title_pref_sampling_rate">サンプリングレート</string>
     <string name="summary_pref_sampling_rate">レートを選択してください。</string>
     <string name="summary_pref_is_tracked">測定中に軌跡を表示します。</string>
 
+    <!-- 測定画面-->
     <string name="comfortable">快である</string>
     <string name="uncomfortable">不快である</string>
     <string name="obscure">ぼんやりしている</string>
     <string name="clear">はっきりしている</string>
 
-    <string name="no_data">データがありません。</string>
+    <!-- 測定インストラクション画面-->
+
+    <!-- 履歴閲覧画面-->
     <string name="with_track">軌跡あり</string>
     <string name="without_track">軌跡なし</string>
-
     <string name="execute_delete">削除実行</string>
     <string name="choose_delete">選択削除</string>
     <string name="done">完了</string>
 
+    <!-- 結果画面-->
+    <string name="abscissa_convergence">収束座標</string>
+    <string name="x_value">X軸</string>
+    <string name="y_value">Y軸</string>
 
 </resources>

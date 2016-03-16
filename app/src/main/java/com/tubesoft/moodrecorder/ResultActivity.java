@@ -153,7 +153,19 @@ public class ResultActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            switch (position) {
+                case 0:
+                    ResultTabConvFragment tabConv = new ResultTabConvFragment();
+                    return tabConv;
+                case 1:
+                    ResultTabXFragment tabX = new ResultTabXFragment();
+                    return tabX;
+                case 2:
+                    ResultTabYFragment tabY = new ResultTabYFragment();
+                    return tabY;
+                default:
+                    return PlaceholderFragment.newInstance(position + 1);
+            }
         }
 
         @Override
@@ -167,15 +179,17 @@ public class ResultActivity extends AppCompatActivity {
             switch (position) {
                 //文字列は後でバイリンガル設定しておくこと。
                 case 0:
-                    return "収束座標";
+                    return getBaseContext().getString(R.string.abscissa_convergence);
                 case 1:
-                    return "X軸";
+                    return getBaseContext().getString(R.string.x_value);
                 case 2:
-                    return "Y軸";
+                    return getBaseContext().getString(R.string.y_value);
             }
             return null;
         }
     }
+
+
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getAction()==KeyEvent.ACTION_DOWN) {

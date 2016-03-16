@@ -1,6 +1,7 @@
 <resources>
-    <string name="section_format">Hello World from section: %1$d</string>
-    <!-->インストラクション画面のお試し文字列<-->
+    <string name="section_format">Hello World from section: %1$d</string><!--インストラクション画面のお試し文字列-->
+
+    <!-- アクティビティタイトル-->
     <string name="app_name">Mood Recorder</string>
     <string name="title_activity_otameshi">Otameshi</string>
     <string name="title_activity_measurement_instruction">Measurement Instruction</string>
@@ -8,24 +9,39 @@
     <string name="title_activity_result">Results</string>
     <string name="title_activity_measurement">Measurement</string>
     <string name="title_activity_preferences_app">Preferences</string>
+
+    <!-- トップ画面-->
     <string name="start_measurement">Start</string>
     <string name="minute">Min.</string>
     <string name="second">Sec.</string>
 
+    <!-- 設定画面-->
     <string name="title_pref_is_tracked">Draw Tracking</string>
     <string name="title_pref_sampling_rate">Sampling Rate</string>
     <string name="summary_pref_sampling_rate">Choose the following rates.</string>
     <string name="summary_pref_is_tracked">Draw a track while measurements.</string>
+
+    <!-- 測定画面-->
     <string name="comfortable">Comfortable</string>
     <string name="uncomfortable">Uncomfortable</string>
     <string name="obscure">Obscure</string>
     <string name="clear">Clear</string>
 
-    <string name="no_data">NO DATA</string>
+    <!-- 測定インストラクション画面-->
+
+    <!-- 履歴閲覧画面-->
     <string name="with_track">With Track</string>
     <string name="without_track">Without Track</string>
-
+    <string name="no_data">NO DATA</string>
     <string name="execute_delete">Delete</string>
     <string name="choose_delete">Delete Selected</string>
     <string name="done">Done</string>
+    <string name="record_path">SavedRecord.txt</string>
+
+    <!-- 結果画面-->
+    <string name="abscissa_convergence">Abs. of Comv.</string>
+    <string name="x_value">X Value</string>
+    <string name="y_value">Y Value</string>
+
+
 </resources>

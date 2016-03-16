@@ -50,7 +50,6 @@ public class HistoryListAdapter extends ArrayAdapter<HistoryItems>{
             mIsChecked = (CheckBox)convertView.findViewById(R.id.checkBox);
             mIsChecked.setChecked(false);
 
-            System.out.println(isCbVisible);
             if (isCbVisible){
                 mIsChecked.setVisibility(View.VISIBLE);
             } else {
