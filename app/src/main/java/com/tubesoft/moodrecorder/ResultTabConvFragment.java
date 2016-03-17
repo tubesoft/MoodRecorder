@@ -93,12 +93,12 @@ public class ResultTabConvFragment extends Fragment {
 //            ParsePosition pos = new ParsePosition(0);
 //            Date time = dateFormat.parse(timeStr,pos);
 
-                //お試し
-            System.out.println("X:"+items[1]);
+            //お試し
             System.out.println("Time:" + items[0]);
             float x = Float.parseFloat(items[1]);
-//            float y = Float.parseFloat(items[2]);
-            listEntry.add(new Entry(x,cnt));
+            float y = Float.parseFloat(items[2]);
+            float ave = (x+y)/2;
+            listEntry.add(new Entry(ave,cnt));
             listTime.add(items[0]);
             System.out.println(cnt);
             //お試し終わり
