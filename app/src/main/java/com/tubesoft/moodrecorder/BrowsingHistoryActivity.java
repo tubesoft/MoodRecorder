@@ -278,7 +278,7 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
             out.close();
         }
 
-        //テストデータを元に戻したいときは、以下のコメントアウトを解除
+        //テストデータを元に戻したいときは、以下のコメントアウトを解除（assetsにおいてあるファイルから読み込む）
 //        InputStream is = this.getAssets().open(path);
 //        BufferedReader in = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 //        String line;
