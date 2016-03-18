@@ -17,9 +17,9 @@
 
     <!-- 設定画面-->
     <string name="title_pref_is_tracked">Draw Tracking</string>
-    <string name="title_pref_sampling_rate">Sampling Rate</string>
-    <string name="summary_pref_sampling_rate">Choose the following rates.</string>
     <string name="summary_pref_is_tracked">Draw a track while measurements.</string>
+    <string name="title_pref_sampling_rate">Sampling Rate (Hz)</string>
+    <string name="summary_pref_sampling_rate">Choose the following rates.(Hz)</string>
 
     <!-- 測定画面-->
     <string name="comfortable">Comfortable</string>

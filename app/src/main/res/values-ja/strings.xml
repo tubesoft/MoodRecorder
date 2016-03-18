@@ -17,9 +17,9 @@
 
     <!-- 設定画面-->
     <string name="title_pref_is_tracked">軌跡の表示</string>
-    <string name="title_pref_sampling_rate">サンプリングレート</string>
-    <string name="summary_pref_sampling_rate">レートを選択してください。</string>
     <string name="summary_pref_is_tracked">測定中に軌跡を表示します。</string>
+    <string name="title_pref_sampling_rate">サンプリングレート(Hz)</string>
+    <string name="summary_pref_sampling_rate">レートを選択してください。(Hz)</string>
 
     <!-- 測定画面-->
     <string name="comfortable">快である</string>

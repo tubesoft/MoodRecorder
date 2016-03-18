@@ -68,9 +68,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnHistory:
                 startActivity(new Intent(this, BrowsingHistoryActivity.class));
                 break;
+            //臨時で直接測定画面へ行くボタン
             case R.id.btnDirect:
-                System.out.println("PRESSED");
-                startActivity(new Intent(this, MeasurementActivity.class));
+                MeasurementTime times = new MeasurementTime(npMin.getValue(), npSec.getValue());
+                Intent intentMeasurement = new Intent(this, MeasurementActivity.class);
+                intentMeasurement.putExtra("measurement_time", times);
+                startActivity(intentMeasurement);
+                break;
         }
     }
 }
