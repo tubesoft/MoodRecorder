@@ -59,7 +59,7 @@ public class ResultTabXFragment extends Fragment {
     //assetsフォルダ内のtxtファイルを読み込むメソッド
     private void loadCsv(int id) throws IOException {
         String path = getContext().getString(R.string.record_path);
-        InputStream is = getContext().getAssets().open(path);
+        InputStream is = getContext().openFileInput(path);
         BufferedReader in = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
         String line;
@@ -91,13 +91,13 @@ public class ResultTabXFragment extends Fragment {
 //            Date time = dateFormat.parse(timeStr,pos);
 
             //お試し
-            System.out.println("X:"+items[1]);
-            System.out.println("Time:" + items[0]);
+//            System.out.println("X:"+items[1]);
+//            System.out.println("Time:" + items[0]);
             float x = Float.parseFloat(items[1]);
 //            float y = Float.parseFloat(items[2]);
             listEntry.add(new Entry(x,cnt));
             listTime.add(items[0]);
-            System.out.println(cnt);
+//            System.out.println(cnt);
             //お試し終わり
 
             cnt++;

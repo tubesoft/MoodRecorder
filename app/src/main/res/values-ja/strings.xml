@@ -35,6 +35,11 @@
     <string name="execute_delete">削除実行</string>
     <string name="choose_delete">選択削除</string>
     <string name="done">完了</string>
+    <string name="warning">警告</string>
+    <string name="confirm">確認</string>
+    <string name="warning_message">項目が選択されていません。</string>
+    <string name="delete_confirmation1">選択した</string>
+    <string name="delete_confirmation2">項目を削除しますか？</string>
 
     <!-- 結果画面-->
     <string name="abscissa_convergence">収束座標</string>

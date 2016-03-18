@@ -44,9 +44,10 @@ android:padding="16dp">
         android:layout_height="wrap_content"
         android:layout_rowSpan="3"
         android:layout_column="4"
+        android:layout_row="0"
         android:clickable="false"
         android:focusable="false"
-        />
+        android:layout_gravity="center_vertical" />
 
 </GridLayout>
 

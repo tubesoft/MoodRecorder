@@ -37,6 +37,12 @@
     <string name="choose_delete">Delete Selected</string>
     <string name="done">Done</string>
     <string name="record_path">SavedRecord.txt</string>
+    <string name="warning">Warning</string>
+    <string name="confirm">Confirmation</string>
+    <string name="warning_message">No items are chosen.</string>
+    <string name="delete_confirmation1">Are you sure deleting</string>
+    <string name="delete_confirmation2">chosen item(s)?</string>
+
 
     <!-- 結果画面-->
     <string name="abscissa_convergence">Abs. of Comv.</string>
