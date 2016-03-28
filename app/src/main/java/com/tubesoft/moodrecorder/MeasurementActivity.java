@@ -4,8 +4,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
@@ -55,6 +53,8 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
         MeasurementTime time = (MeasurementTime)getIntent().getSerializableExtra("measurement_time");
         measureSec = time.getTime(MeasurementTime.times.SEC);
         measureMin = time.getTime(MeasurementTime.times.MIN);
+        TextView timeText = (TextView)findViewById(R.id.textViewTime);
+        timeText.setText(measureMin + "分" + measureSec + "秒");
 
         //座標取得ビューを取得
         positionText = (TextView)findViewById(R.id.position);
@@ -145,4 +145,5 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
         }
     }
 
+//※測定が終わったときの処理：リストを保存ファイルに書き込む＋結果画面に遷移（履歴から来ていないフラグを渡す）
 }

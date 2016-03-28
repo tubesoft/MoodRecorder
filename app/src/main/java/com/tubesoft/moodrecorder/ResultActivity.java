@@ -1,5 +1,6 @@
 package com.tubesoft.moodrecorder;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -48,8 +49,6 @@ public class ResultActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
-        int listId = intent.getIntExtra("list_id", -1);
-        int listSize = intent.getIntExtra("list_size",0);
         isFromHistory = intent.getBooleanExtra("is_from_history", false);
 
         //ツールバーに戻るボタンを設置(→ここでは履歴から来た場合と測定から直接来た場合で分ける。物理ボタンの戻るも効かないようにする必要あり。)
@@ -61,9 +60,6 @@ public class ResultActivity extends AppCompatActivity {
                     finish();
                 }
             });
-        } else {
-            //測定から来た場合には、リストの最後に保存されるので、listIdを末尾に設定。
-            listId = listSize - 1;
         }
 
     // Create the adapter that will return a fragment for each of the three
@@ -129,14 +125,6 @@ public class ResultActivity extends AppCompatActivity {
             return fragment;
         }
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_result, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
     }
 
     /**
@@ -177,7 +165,6 @@ public class ResultActivity extends AppCompatActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
-                //文字列は後でバイリンガル設定しておくこと。
                 case 0:
                     return getBaseContext().getString(R.string.abscissa_convergence);
                 case 1:
@@ -196,9 +183,15 @@ public class ResultActivity extends AppCompatActivity {
                 switch (event.getKeyCode()) {
                     case KeyEvent.KEYCODE_BACK:
                         //履歴から来たときには戻れる。測定から直接来たときには戻れない。
-                        if (!isFromHistory) {
+                        if (isFromHistory) {
                             finish();
                         } else {
+                            new AlertDialog.Builder(this)
+                                    .setTitle(getString(R.string.warning))
+                                    .setMessage(getString(R.string.cannot_go_back))
+                                    .setPositiveButton("OK", null)
+                                    .show();
+
                             return true;
                         }
                 }

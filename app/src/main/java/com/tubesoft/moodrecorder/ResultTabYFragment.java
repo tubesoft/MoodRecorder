@@ -42,7 +42,18 @@ public class ResultTabYFragment extends Fragment {
         LineChart lineChart = (LineChart) view.findViewById(R.id.y_chart);
 //        setChartProperty(lineChart);
         Intent intent = getActivity().getIntent();
-        int listId = intent.getIntExtra("list_id", -1);
+        boolean isFromHistory = intent.getBooleanExtra("is_from_history", false);
+        //履歴からのときは格納したリストid、測定からのときは末尾のidを取り出す。
+        int listId = -1;
+        if (isFromHistory){
+            listId = intent.getIntExtra("list_id", -1);
+        } else {
+            try {
+                listId = countListSize() - 1;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         try {
             loadCsv(listId);
@@ -56,7 +67,7 @@ public class ResultTabYFragment extends Fragment {
         return view;
     }
 
-    //assetsフォルダ内のtxtファイルを読み込むメソッド
+    //txtファイルを読み込むメソッド
     private void loadCsv(int id) throws IOException {
         String path = getContext().getString(R.string.record_path);
         InputStream is = getContext().openFileInput(path);
@@ -108,6 +119,7 @@ public class ResultTabYFragment extends Fragment {
         lineData = new LineData(listTime,dataSet);
     }
 
+    //グラフのフォーマットを定義するメソッド
     private void setChartProperty (LineChart mChart){
         // enable touch gestures
         mChart.setTouchEnabled(true);
@@ -143,4 +155,19 @@ public class ResultTabYFragment extends Fragment {
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setEnabled(false);
     }
+
+    private int countListSize() throws IOException {
+        String path = getContext().getString(R.string.record_path);
+        InputStream is = getContext().openFileInput(path);
+        int size = 0;
+        BufferedReader in = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+        String line;
+        while ((line = in.readLine()) != null) {
+            if (line.equals("EOR")){
+                size++;
+            }
+        }
+        return size;
+    }
+
 }

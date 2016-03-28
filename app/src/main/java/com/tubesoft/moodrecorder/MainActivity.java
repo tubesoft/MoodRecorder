@@ -1,5 +1,6 @@
 package com.tubesoft.moodrecorder;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.support.v7.app.AppCompatActivity;
@@ -27,9 +28,13 @@ public class MainActivity extends AppCompatActivity {
         npMin = (NumberPicker) findViewById(R.id.numPickerMin);
 
         npSec.setMaxValue(59);
-        npSec.setMinValue(1);
+        npSec.setMinValue(0);
         npMin.setMaxValue(30);
         npMin.setMinValue(0);
+
+        //ナンバーピッカーのデフォ値を設定
+        npMin.setValue(1);
+        npSec.setValue(0);
     }
 
     @Override
@@ -59,21 +64,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, OtameshiActivity.class));
                 break;
             case R.id.btnMeasurement:
-                //ナンバーピッカーの値を取得
-                MeasurementTime time = new MeasurementTime(npMin.getValue(), npSec.getValue());
-                Intent intentMeasurementInstruction = new Intent(this, MeasurementInstructionActivity.class);
-                intentMeasurementInstruction.putExtra("measurement_time", time);
-                startActivity(intentMeasurementInstruction);
-                break;
+                //ナンバーピッカーの値を取得（両方0のときは警告）
+                if (npMin.getValue()==0 && npSec.getValue()==0){
+                    new AlertDialog.Builder(this)
+                            .setTitle(getString(R.string.warning))
+                            .setMessage(getString(R.string.set_appropriate_time))
+                            .setPositiveButton("OK", null)
+                            .show();
+                    break;
+                } else {
+                    MeasurementTime time = new MeasurementTime(npMin.getValue(), npSec.getValue());
+                    Intent intentMeasurementInstruction = new Intent(this, MeasurementInstructionActivity.class);
+                    intentMeasurementInstruction.putExtra("measurement_time", time);
+                    startActivity(intentMeasurementInstruction);
+                    break;
+                }
             case R.id.btnHistory:
                 startActivity(new Intent(this, BrowsingHistoryActivity.class));
-                break;
-            //臨時で直接測定画面へ行くボタン
-            case R.id.btnDirect:
-                MeasurementTime times = new MeasurementTime(npMin.getValue(), npSec.getValue());
-                Intent intentMeasurement = new Intent(this, MeasurementActivity.class);
-                intentMeasurement.putExtra("measurement_time", times);
-                startActivity(intentMeasurement);
                 break;
         }
     }

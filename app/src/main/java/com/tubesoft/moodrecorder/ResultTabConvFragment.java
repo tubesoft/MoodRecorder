@@ -1,5 +1,6 @@
 package com.tubesoft.moodrecorder;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
@@ -20,11 +21,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.security.Timestamp;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,7 +42,18 @@ public class ResultTabConvFragment extends Fragment {
         LineChart lineChart = (LineChart) view.findViewById(R.id.conv_chart);
 //        setChartProperty(lineChart);
         Intent intent = getActivity().getIntent();
-        int listId = intent.getIntExtra("list_id", -1);
+        boolean isFromHistory = intent.getBooleanExtra("is_from_history", false);
+        //履歴からのときは格納したリストid、測定からのときは末尾のidを取り出す。
+        int listId = -1;
+        if (isFromHistory){
+            listId = intent.getIntExtra("list_id", -1);
+        } else {
+            try {
+                listId = countListSize() - 1;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         try {
             loadCsv(listId);
@@ -59,7 +67,7 @@ public class ResultTabConvFragment extends Fragment {
         return view;
     }
 
-    //assetsフォルダ内のtxtファイルを読み込むメソッド
+    //txtファイルを読み込むメソッド
     private void loadCsv(int id) throws IOException {
         String path = getContext().getString(R.string.record_path);
         InputStream is = getContext().openFileInput(path);
@@ -111,6 +119,7 @@ public class ResultTabConvFragment extends Fragment {
         lineData = new LineData(listTime,dataSet);
     }
 
+    //グラフのフォーマットを定義するメソッド
     private void setChartProperty (LineChart mChart){
         // enable touch gestures
         mChart.setTouchEnabled(true);
@@ -145,6 +154,20 @@ public class ResultTabConvFragment extends Fragment {
 
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setEnabled(false);
+    }
+
+    private int countListSize() throws IOException {
+        String path = getContext().getString(R.string.record_path);
+        InputStream is = getContext().openFileInput(path);
+        int size = 0;
+        BufferedReader in = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+        String line;
+        while ((line = in.readLine()) != null) {
+            if (line.equals("EOR")){
+                size++;
+            }
+        }
+        return size;
     }
 
 }

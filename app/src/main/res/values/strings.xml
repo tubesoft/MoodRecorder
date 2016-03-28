@@ -14,6 +14,8 @@
     <string name="start_measurement">Start</string>
     <string name="minute">Min.</string>
     <string name="second">Sec.</string>
+    <string name="set_appropriate_time">Please set appropriate time.</string>
+
 
     <!-- 設定画面-->
     <string name="title_pref_is_tracked">Draw Tracking</string>
@@ -28,6 +30,8 @@
     <string name="clear">Clear</string>
 
     <!-- 測定インストラクション画面-->
+    <string name="instruction_top">Locate your mood.\n\nObserve the change of your mood\nand record it.</string>
+    <string name="instruction_bottom">DO NOT release your finger from the display.\nAfter press "Start" button, the measurement will begin in 5 secs.</string>
 
     <!-- 履歴閲覧画面-->
     <string name="with_track">With Track</string>
@@ -48,6 +52,7 @@
     <string name="abscissa_convergence">Abs. of Comv.</string>
     <string name="x_value">X Value</string>
     <string name="y_value">Y Value</string>
+    <string name="cannot_go_back">Sorry, you cannot go back.</string>
 
 
 </resources>
