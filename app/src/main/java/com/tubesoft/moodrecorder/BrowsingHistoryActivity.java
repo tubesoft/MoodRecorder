@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -28,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class BrowsingHistoryActivity extends AppCompatActivity {
@@ -35,7 +35,6 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
     private ArrayList<Map<String,Object>> rec = new ArrayList<>();
     private List<HistoryItems> listItems;
     private HistoryListAdapter adapter;
-//    private SimpleAdapter adapter;
     private ListView listView;
     private boolean isBtnDeleteSelected = false;
     private MenuItem dltChn;
@@ -181,7 +180,7 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
             }
     }
 
-    //assetsフォルダ内のtxtファイルを読み込むメソッド
+    //txtファイルを読み込むメソッド
     private void loadCsv() throws IOException, ParseException {
         InputStream is = this.openFileInput(path);
         BufferedReader in = new BufferedReader(new InputStreamReader(is, "UTF-8"));
@@ -191,9 +190,9 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
         while ((line = in.readLine()) != null) {
             HistoryItems items = new HistoryItems();
             //保存時刻の読み込み
-            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.JAPAN);
             Date date = sdf1.parse(line);
-            SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+            SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.JAPAN);
             String savedDate = sdf2.format(date);
             items.setTime(savedDate);
             line = in.readLine();
