@@ -1,5 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="section_format">Hello World from section: %1$d</string><!--インストラクション画面のお試し文字列-->
+
+    <!-- 英語のみ-->
+    <string name="record_path">SavedRecord.txt</string>
+
+    <!-- 共通-->
+    <string name="start_measurement">Start</string>
+    <string name="done">Done</string>
+    <string name="warning">Warning</string>
+    <string name="confirm">Confirmation</string>
 
     <!-- アクティビティタイトル-->
     <string name="app_name">Mood Recorder</string>
@@ -11,11 +20,9 @@
     <string name="title_activity_preferences_app">Preferences</string>
 
     <!-- トップ画面-->
-    <string name="start_measurement">Start</string>
     <string name="minute">Min.</string>
     <string name="second">Sec.</string>
     <string name="set_appropriate_time">Please set appropriate time.</string>
-
 
     <!-- 設定画面-->
     <string name="title_pref_is_tracked">Draw Tracking</string>
@@ -34,25 +41,19 @@
     <string name="instruction_bottom">DO NOT release your finger from the display.\nAfter press "Start" button, the measurement will begin in 5 secs.</string>
 
     <!-- 履歴閲覧画面-->
+    <string name="no_data">NO DATA</string>
     <string name="with_track">With Track</string>
     <string name="without_track">Without Track</string>
-    <string name="no_data">NO DATA</string>
     <string name="execute_delete">Delete</string>
     <string name="choose_delete">Delete Selected</string>
-    <string name="done">Done</string>
-    <string name="record_path">SavedRecord.txt</string>
-    <string name="warning">Warning</string>
-    <string name="confirm">Confirmation</string>
     <string name="warning_message">No items are chosen.</string>
     <string name="delete_confirmation1">Are you sure deleting</string>
     <string name="delete_confirmation2">chosen item(s)?</string>
-
 
     <!-- 結果画面-->
     <string name="abscissa_convergence">Abs. of Comv.</string>
     <string name="x_value">X Value</string>
     <string name="y_value">Y Value</string>
     <string name="cannot_go_back">Sorry, you cannot go back.</string>
-
 
 </resources>

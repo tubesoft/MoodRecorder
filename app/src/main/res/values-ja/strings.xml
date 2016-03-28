@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- 共通-->
+    <string name="start_measurement">測定開始</string>
+    <string name="done">完了</string>
+    <string name="warning">警告</string>
+    <string name="confirm">確認</string>
+
     <!-- アクティビティタイトル-->
     <string name="app_name">気分状態測定アプリ</string>
     <string name="title_activity_otameshi">お試し</string>
@@ -11,7 +17,6 @@
     <string name="title_activity_measurement">測定</string>
 
     <!-- トップ画面-->
-    <string name="start_measurement">測定開始</string>
     <string name="minute">分</string>
     <string name="second">秒</string>
     <string name="set_appropriate_time">適切な時間を設定してください。</string>
@@ -33,13 +38,11 @@
     <string name="instruction_bottom">測定中は指を画面から離さないでください\n開始ボタンを押すと5秒後に測定が始まります。</string>
 
     <!-- 履歴閲覧画面-->
+    <string name="no_data">データがありません</string>
     <string name="with_track">軌跡あり</string>
     <string name="without_track">軌跡なし</string>
     <string name="execute_delete">削除実行</string>
     <string name="choose_delete">選択削除</string>
-    <string name="done">完了</string>
-    <string name="warning">警告</string>
-    <string name="confirm">確認</string>
     <string name="warning_message">項目が選択されていません。</string>
     <string name="delete_confirmation1">選択した</string>
     <string name="delete_confirmation2">項目を削除しますか？</string>
