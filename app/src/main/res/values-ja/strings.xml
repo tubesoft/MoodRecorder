@@ -6,6 +6,7 @@
     <string name="done">完了</string>
     <string name="warning">警告</string>
     <string name="confirm">確認</string>
+    <string name="cancel">キャンセル</string>
 
     <!-- アクティビティタイトル-->
     <string name="app_name">気分状態測定アプリ</string>
@@ -32,6 +33,10 @@
     <string name="uncomfortable">不快である</string>
     <string name="obscure">ぼんやりしている</string>
     <string name="clear">はっきりしている</string>
+    <string name="question_save">測定結果を保存しますか？</string>
+    <string name="discard">破棄</string>
+    <string name="saving">保存中…</string>
+    <string name="saved">保存しました。</string>
 
     <!-- 測定インストラクション画面-->
     <string name="instruction_top">あなたの気分は今どの位置にありますか？\n\n気持ちの揺れをじっくりと観察して\nその様子を指で記録してみましょう。</string>

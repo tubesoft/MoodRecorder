@@ -9,6 +9,9 @@
     <string name="done">Done</string>
     <string name="warning">Warning</string>
     <string name="confirm">Confirmation</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
 
     <!-- アクティビティタイトル-->
     <string name="app_name">Mood Recorder</string>
@@ -35,6 +38,10 @@
     <string name="uncomfortable">Uncomfortable</string>
     <string name="obscure">Obscure</string>
     <string name="clear">Clear</string>
+    <string name="question_save">Do you save the result?</string>
+    <string name="discard">Discard</string>
+    <string name="saving">Saving...</string>
+    <string name="saved">The result has been saved.</string>
 
     <!-- 測定インストラクション画面-->
     <string name="instruction_top">Locate your mood.\n\nObserve the change of your mood\nand record it.</string>

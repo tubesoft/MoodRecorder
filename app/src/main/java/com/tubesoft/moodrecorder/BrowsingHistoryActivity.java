@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -40,6 +41,7 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
     private MenuItem dltChn;
     private MenuItem dltCfm;
     private String path;
+    private String fullPath;
 
 
 
@@ -60,6 +62,7 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
         path = getString(R.string.record_path);
         //リストビューを設定
         listView = (ListView) findViewById(R.id.list);
+        listItems = new ArrayList<HistoryItems>();
         //保存ファイルがあるか確認
         try {
             checkFileExist();
@@ -184,8 +187,6 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
     private void loadCsv() throws IOException, ParseException {
         InputStream is = this.openFileInput(path);
         BufferedReader in = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-
-        listItems = new ArrayList<HistoryItems>();
         String line;
         while ((line = in.readLine()) != null) {
             HistoryItems items = new HistoryItems();
@@ -253,48 +254,37 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
     }
 
     public void checkFileExist() throws IOException {
-        //とりあえずファイルがないときはassetsのテストデータを読み込むようにしておく。そのうち空ファイル作成に変更。
-        if (this.openFileInput(path) == null) {
+        File file = new File((new StringBuffer()).append(getFilesDir()).append("/").append(path).toString());
+        if (!file.exists()) {
+            System.out.println("ファイル無し");
+//            PrintWriter out = new PrintWriter(
+//                    new BufferedWriter(new OutputStreamWriter(
+//                            openFileOutput(path, MODE_PRIVATE), "UTF-8")));
+//            out.write("");
+//            out.close();
+
 
             //空ファイルの作成
-//            File newFile = new File(path);
-//            newFile.createNewFile();
+            file.createNewFile();
 
-            InputStream is = this.getAssets().open(path);
-            BufferedReader in = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-            String line;
-            List<String> writeList = new ArrayList<String>();
-            while((line = in.readLine()) != null){
-                writeList.add(line);
-            }
-            in.close();
-            PrintWriter out = new PrintWriter(
-                    new BufferedWriter(new OutputStreamWriter(
-                            openFileOutput(path, MODE_PRIVATE), "UTF-8")));
-            for (int i=0; i<writeList.size(); i++){
-                out.println(writeList.get(i));
-            }
-            out.close();
+//            InputStream is = this.getAssets().open(path);
+//            BufferedReader in = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+//            String line;
+//            List<String> writeList = new ArrayList<String>();
+//            while((line = in.readLine()) != null){
+//                writeList.add(line);
+//            }
+//            in.close();
+//            PrintWriter out = new PrintWriter(
+//                    new BufferedWriter(new OutputStreamWriter(
+//                            openFileOutput(path, MODE_PRIVATE), "UTF-8")));
+//            for (int i=0; i<writeList.size(); i++){
+//                out.println(writeList.get(i));
+//            }
+//            out.close();
+        } else {
+            System.out.println("ファイルあり");
         }
-
-        //テストデータを元に戻したいときは、以下のコメントアウトを解除（assetsにおいてあるファイルから読み込む）
-//        InputStream is = this.getAssets().open(path);
-//        BufferedReader in = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-//        String line;
-//        List<String> writeList = new ArrayList<String>();
-//        while((line = in.readLine()) != null){
-//            writeList.add(line);
-//        }
-//        in.close();
-//        PrintWriter out = new PrintWriter(
-//                new BufferedWriter(new OutputStreamWriter(
-//                        openFileOutput(path, MODE_PRIVATE), "UTF-8")));
-//        for (int i=0; i<writeList.size(); i++){
-//            out.println(writeList.get(i));
-//        }
-//        out.close();
-
     }
-
 }
 
