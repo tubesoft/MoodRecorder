@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         npMin.setMinValue(0);
 
         //ナンバーピッカーのデフォ値を設定
-        npMin.setValue(1);
-        npSec.setValue(0);
+        npMin.setValue(0);
+        npSec.setValue(10);
     }
 
     @Override

@@ -75,16 +75,16 @@ public class ResultTabYFragment extends Fragment {
 
         String line;
         for (int i=0; i<id; i++){
-            while (!in.readLine().equals("EOR")) {
+            while (!in.readLine().equals("EOR,,")) {
                 continue;
             }
         }
         line = in.readLine();
-        date = line;
+        date = line.substring(0,line.indexOf(","));
         line = in.readLine();
-        samplingRate = line;
+        samplingRate = line.substring(0,line.indexOf(","));
         line = in.readLine();
-        if (line.equals("true")) {
+        if (line.equals("true,,")) {
             isTracked = true;
         } else {
             isTracked = false;
@@ -94,7 +94,7 @@ public class ResultTabYFragment extends Fragment {
         List listTime = new ArrayList();
         int cnt = 0;
         line = in.readLine();
-        while (!line.equals("EOR")) {
+        while (!line.equals("EOR,,")) {
             String[] items = line.split(",");
 //            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss.SSS");
 //            String timeStr = items[0];
@@ -163,7 +163,7 @@ public class ResultTabYFragment extends Fragment {
         BufferedReader in = new BufferedReader(new InputStreamReader(is, "UTF-8"));
         String line;
         while ((line = in.readLine()) != null) {
-            if (line.equals("EOR")){
+            if (line.equals("EOR,,")){
                 size++;
             }
         }

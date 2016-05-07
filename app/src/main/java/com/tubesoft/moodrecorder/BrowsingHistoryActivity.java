@@ -41,7 +41,6 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
     private MenuItem dltChn;
     private MenuItem dltCfm;
     private String path;
-    private String fullPath;
 
 
 
@@ -192,23 +191,23 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
             HistoryItems items = new HistoryItems();
             //保存時刻の読み込み
             SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.JAPAN);
-            Date date = sdf1.parse(line);
+            Date date = sdf1.parse(line.substring(0,line.indexOf(",")));
             SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.JAPAN);
             String savedDate = sdf2.format(date);
             items.setTime(savedDate);
             line = in.readLine();
             //サンプリングレート読み込み
             StringBuilder sb = new StringBuilder();
-            sb.append(line);
+            sb.append(line.substring(0,line.indexOf(",")));
             sb.append(" Hz");
             items.setSamplingRate(sb.toString());
             line = in.readLine();
-            if (line.equals("true")){
+            if (line.equals("true,,")){
                 items.setIsTracked(true);
             } else {
                 items.setIsTracked(false);
             }
-            while (!in.readLine().equals("EOR")) {
+            while (!in.readLine().equals("EOR,,")) {
                 continue;
             }
             items.setIsChecked(false);
@@ -228,15 +227,15 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
                 break;
             }
             if (dList.contains(i)){
-                while(!line.equals("EOR")){
+                while(!line.equals("EOR,,")){
                     line = in.readLine();
                 }
             } else {
-                while(!line.equals("EOR")){
+                while(!line.equals("EOR,,")){
                     writeList.add(line);
                     line = in.readLine();
                 }
-                writeList.add("EOR");
+                writeList.add("EOR,,");
             }
         }
         in.close();
@@ -257,31 +256,8 @@ public class BrowsingHistoryActivity extends AppCompatActivity {
         File file = new File((new StringBuffer()).append(getFilesDir()).append("/").append(path).toString());
         if (!file.exists()) {
             System.out.println("ファイル無し");
-//            PrintWriter out = new PrintWriter(
-//                    new BufferedWriter(new OutputStreamWriter(
-//                            openFileOutput(path, MODE_PRIVATE), "UTF-8")));
-//            out.write("");
-//            out.close();
-
-
             //空ファイルの作成
             file.createNewFile();
-
-//            InputStream is = this.getAssets().open(path);
-//            BufferedReader in = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-//            String line;
-//            List<String> writeList = new ArrayList<String>();
-//            while((line = in.readLine()) != null){
-//                writeList.add(line);
-//            }
-//            in.close();
-//            PrintWriter out = new PrintWriter(
-//                    new BufferedWriter(new OutputStreamWriter(
-//                            openFileOutput(path, MODE_PRIVATE), "UTF-8")));
-//            for (int i=0; i<writeList.size(); i++){
-//                out.println(writeList.get(i));
-//            }
-//            out.close();
         } else {
             System.out.println("ファイルあり");
         }

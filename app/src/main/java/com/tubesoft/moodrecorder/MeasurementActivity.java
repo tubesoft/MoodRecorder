@@ -267,9 +267,12 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
         //最後に今の結果をだす
         Date currentDate = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        String currentDateStr = sdf.format(currentDate);
-        String samplingRateStr = Integer.toString(samplingRate);
-        String isTrackedStr = Boolean.toString(isTracked);
+        StringBuffer sbCD = new StringBuffer();
+        StringBuffer sbSR = new StringBuffer();
+        StringBuffer sbT = new StringBuffer();
+        String currentDateStr = (new StringBuffer()).append(sdf.format(currentDate)).append(",,").toString();
+        String samplingRateStr = (new StringBuffer()).append(Integer.toString(samplingRate)).append(",,").toString();
+        String isTrackedStr = (new StringBuffer()).append(Boolean.toString(isTracked)).append(",,").toString();
         recordList.add(currentDateStr);
         recordList.add(samplingRateStr);
         recordList.add(isTrackedStr);
@@ -287,7 +290,7 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
             sb.append(Float.toString((coordinate[1]*2-height)/height));
             recordList.add(sb.toString());
         }
-        recordList.add("EOR");
+        recordList.add("EOR,,");
 
         PrintWriter out = new PrintWriter(
                 new BufferedWriter(new OutputStreamWriter(
