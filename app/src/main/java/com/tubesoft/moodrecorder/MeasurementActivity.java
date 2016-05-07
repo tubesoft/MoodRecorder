@@ -1,45 +1,36 @@
 package com.tubesoft.moodrecorder;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class MeasurementActivity extends AppCompatActivity implements View.OnTouchListener{
 
@@ -62,10 +53,10 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
     private int countMeasureMSec;   //測定時間のカウント
     private int secCounter; //一秒間の間に通って回数をカウント
     private List listPositions;
+    private List listTimestamps;
     protected Timer measurementTimer;
     protected MeasurementTimerTask measurementTimerTask;
     private String path; //データ保存先のパス
-    private String fullPath;
     private DecimalFormat df;
     private int countRecord; //保存しているレコード数
     //軌跡の描画関連
@@ -81,6 +72,8 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
         setSupportActionBar(toolbar);
 
         path = getString(R.string.record_path);
+        listPositions = new ArrayList();
+        listTimestamps = new ArrayList();
 
         //設定からサンプリングレートを取得
         pref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -99,8 +92,6 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
 
         //座標表示テキスト
         positionText = (TextView)findViewById(R.id.position);
-//        img = (ImageView)findViewById(R.id.imageView);
-//        img.setOnTouchListener(this);
 
         //軌跡の描画準備
         drawView = (DrawView)findViewById(R.id.drewView);
@@ -112,13 +103,13 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
         this.countdownTimer = new Timer();
         this.countdownTimerTask = new CountdownTimerTask();
         //schedule(task,time, period)taskオブジェクトのrunメソッドを時刻timeを開始時点としてperiod（ミリ秒）間隔で実行する
-        this.countdownTimer.schedule(countdownTimerTask, 1000, 1000);
+        this.countdownTimer.scheduleAtFixedRate(countdownTimerTask, 1000, 1000);
 
         //測定タイマー
         measureParseMSec = (measureSec + measureMin*60)*1000;
         countMeasureMSec = 0;
         secCounter = 0;
-        this.measurementTimer = new Timer();
+        measurementTimer = new Timer();
         this.measurementTimerTask = new MeasurementTimerTask();
         drawView.setOnTouchListener(this);
         listPositions = new ArrayList();
@@ -171,7 +162,7 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
                         countText.setVisibility(View.GONE);
                         countdownTimer.cancel();
                         //測定タイマーを起動（更新間隔は1秒をレートで割る）
-                        measurementTimer.schedule(measurementTimerTask,0 , (1000/samplingRate));
+                        measurementTimer.scheduleAtFixedRate(measurementTimerTask,0 , (1000/samplingRate));
                         //ここで軌跡の表示をする場合オンにする
                         if (isTracked){
                             canTrack = true;
@@ -191,17 +182,18 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
                 public void run() {
                     //はじめに設定した時間内で処理を終わらせるようにする
                     //以下で測定した座標および時刻をリストに格納する
+                    long currentTime = System.currentTimeMillis();
+                    float position[] = {xPos,yPos};
                     if (countMeasureMSec < measureParseMSec) {
-                        float[] position = new float[3];
-                        position[0] = System.currentTimeMillis(); //システム時刻を読み込みリストに格納
-                        position[1] = xPos;
-                        position[2] = yPos;
+                        listTimestamps.add(currentTime);
                         listPositions.add(position);
                     } else {
                         measurementTimer.cancel();
                         showSaveDialogue();
                     }
                     countMeasureMSec = countMeasureMSec + 1000/samplingRate;
+
+                    //残り時間表示の処理
                     secCounter++;
                     if (secCounter>=samplingRate) {
                         measureSec--;
@@ -237,7 +229,7 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try {
-                            finishingMeasurement(listPositions);
+                            finishingMeasurement(listPositions, listTimestamps);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -253,13 +245,13 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
     }
 
     //測定記録の保存
-    private void finishingMeasurement(List list) throws IOException {
+    private void finishingMeasurement(List listPos, List listTime) throws IOException {
         //ファイルがないときは空のものを作成
         File file = new File((new StringBuffer()).append(getFilesDir()).append("/").append(path).toString());
         if (!file.exists()) {
             file.createNewFile();
         }
-            //これまでの記録をリストに読み込む
+        //これまでの記録をリストに読み込む
         List recordList = new ArrayList<HistoryItems>();
         InputStream is = this.openFileInput(path);
         BufferedReader in = new BufferedReader(new InputStreamReader(is, "UTF-8"));
@@ -283,16 +275,16 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
         recordList.add(isTrackedStr);
         float height = drawView.getHeight();
         float width = drawView.getWidth();
-        for (int i = 0; i < list.size(); i++) {
-            float[] oneLine = (float[]) list.get(i);
-            Date date = new Date((long) oneLine[0]);
+        for (int i = 0; i < listPos.size(); i++) {
+            float[] coordinate = (float[]) listPos.get(i);
+            Date date = new Date((long)listTime.get(i));
             SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss.SSS");
             StringBuffer sb = new StringBuffer();
             sb.append(sdf2.format(date));
             sb.append(",");
-            sb.append(Float.toString((oneLine[1]*2-width)/width));
+            sb.append(Float.toString((coordinate[0]*2-width)/width));
             sb.append(",");
-            sb.append(Float.toString((oneLine[2]*2-height)/height));
+            sb.append(Float.toString((coordinate[1]*2-height)/height));
             recordList.add(sb.toString());
         }
         recordList.add("EOR");
@@ -309,7 +301,6 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
         Intent intentResult = new Intent(this, ResultActivity.class);
         intentResult.putExtra("is_from_history", false);
         intentResult.putExtra("list_id", countRecord+1);
-//        intentResult.putExtra("list_size", listItems.size());
         startActivity(intentResult);
 
     }
