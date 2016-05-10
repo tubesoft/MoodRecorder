@@ -14,18 +14,26 @@
         android:text="@string/instruction_top"
         android:id="@+id/textView9"
         android:gravity="center"
+        android:textSize="11sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/textView10"
+        android:layout_alignStart="@+id/textView10"
+        android:layout_alignRight="@+id/textView10"
+        android:layout_alignEnd="@+id/textView10" />
 
     <ImageView
         android:id="@+id/imageInstrction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"
+        android:scaleType="fitCenter"
         android:src="@drawable/xy_plane"
-        android:layout_below="@+id/textView9"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/btnStartMeasurement"
+        android:layout_alignRight="@+id/imageInstrction2"
+        android:layout_alignEnd="@+id/imageInstrction2"
+        android:layout_alignTop="@+id/imageInstrction2"
+        android:layout_alignLeft="@+id/imageInstrction2"
+        android:layout_alignStart="@+id/imageInstrction2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,27 +41,32 @@
         android:text="@string/instruction_bottom"
         android:id="@+id/textView10"
         android:gravity="center"
-        android:layout_below="@+id/imageInstrction"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textSize="10sp"
+        android:layout_above="@+id/imageInstrction"
+        android:layout_below="@+id/textView9"
+        android:layout_alignLeft="@+id/imageInstrction"
+        android:layout_alignStart="@+id/imageInstrction"
+        android:layout_alignRight="@+id/imageInstrction"
+        android:layout_alignEnd="@+id/imageInstrction" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/start_measurement"
         android:id="@+id/btnStartMeasurement"
-        android:layout_below="@+id/textView10"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/imageInstrction2"
+        android:layout_alignRight="@+id/imageInstrction"
+        android:layout_alignEnd="@+id/imageInstrction"
+        android:layout_alignLeft="@+id/imageInstrction"
+        android:layout_alignStart="@+id/imageInstrction" />
 
     <ImageView
         android:id="@+id/imageInstrction2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"
+        android:scaleType="fitCenter"
         android:src="@drawable/finger_move"
-        android:layout_below="@+id/textView9"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -26,6 +26,7 @@
     <string name="minute">Min.</string>
     <string name="second">Sec.</string>
     <string name="set_appropriate_time">Please set appropriate time.</string>
+    <string name="measuring_time">Measuring Time</string>
 
     <!-- 設定画面-->
     <string name="title_pref_is_tracked">Draw Tracking</string>
@@ -44,8 +45,8 @@
     <string name="saved">The result has been saved.</string>
 
     <!-- 測定インストラクション画面-->
-    <string name="instruction_top">Locate your mood.\n\nObserve the change of your mood\nand record it.</string>
-    <string name="instruction_bottom">DO NOT release your finger from the display.\nAfter press "Start" button, the measurement will begin in 5 secs.</string>
+    <string name="instruction_top">Locate your mood.\nObserve the change of your mood and record it.</string>
+    <string name="instruction_bottom">DO NOT release your finger from the display.\nAfter press "Start" button, the measurement will begin in 3 secs.</string>
 
     <!-- 履歴閲覧画面-->
     <string name="no_data">NO DATA</string>

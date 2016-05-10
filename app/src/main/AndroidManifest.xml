@@ -19,29 +19,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".OtameshiActivity"
-            android:label="@string/title_activity_otameshi"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".BrowsingHistoryActivity"
             android:label="@string/title_activity_browsing_history"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ResultActivity"
             android:label="@string/title_activity_result"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MeasurementActivity"
             android:label="@string/title_activity_measurement"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MeasurementInstructionActivity"
             android:label="@string/title_activity_measurement_instruction"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PreferencesAppActivity"
             android:label="@string/title_activity_preferences_app"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

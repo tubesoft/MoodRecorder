@@ -12,34 +12,18 @@
     tools:context="com.tubesoft.moodrecorder.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ハローワールド\nたかともくんどうもありがとう！\n楽しんでいこう！"
-        android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="次へ"
-        android:id="@+id/btnToOtameshi"
-        android:onClick="onClick"
-        android:nestedScrollingEnabled="true"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_alignLeft="@+id/btnMeasurement"
-        android:layout_alignStart="@+id/btnMeasurement" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_activity_browsing_history"
         android:id="@+id/btnHistory"
         android:onClick="onClick"
-        android:layout_marginTop="111dp"
-        android:layout_below="@+id/numPickerSec"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/btnMeasurement"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="78dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -47,7 +31,10 @@
         android:text="@string/start_measurement"
         android:id="@+id/btnMeasurement"
         android:onClick="onClick"
-        android:layout_alignBottom="@+id/numPickerSec"
+        android:layout_below="@+id/numPickerMin"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="52dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -56,7 +43,7 @@
         android:layout_height="wrap_content"
         android:text="@string/second"
         android:id="@+id/textView3"
-        android:layout_alignTop="@+id/btnMeasurement"
+        android:layout_alignTop="@+id/textView4"
         android:layout_toRightOf="@+id/numPickerSec"
         android:layout_toEndOf="@+id/numPickerSec" />
 
@@ -65,28 +52,35 @@
         android:layout_height="wrap_content"
         android:text="@string/minute"
         android:id="@+id/textView4"
-        android:layout_alignTop="@+id/btnMeasurement"
-        android:layout_toRightOf="@+id/numPickerMin"
-        android:layout_toEndOf="@+id/numPickerMin" />
+        android:layout_alignBottom="@+id/numPickerSec"
+        android:layout_centerHorizontal="true" />
 
     <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="90dp"
         android:id="@+id/numPickerMin"
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/numPickerSec"
-        android:layout_alignTop="@+id/numPickerSec" />
+        android:layout_below="@+id/textView2"
+        android:layout_toLeftOf="@+id/textView4"
+        android:layout_toStartOf="@+id/textView4"
+        android:layout_marginTop="36dp" />
 
     <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="90dp"
         android:id="@+id/numPickerSec"
-        android:layout_marginTop="64dp"
-        android:layout_below="@+id/btnToOtameshi"
+        android:layout_alignTop="@+id/numPickerMin"
         android:layout_toRightOf="@+id/textView4"
         android:layout_toEndOf="@+id/textView4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/measuring_time"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp" />
 
 </RelativeLayout>

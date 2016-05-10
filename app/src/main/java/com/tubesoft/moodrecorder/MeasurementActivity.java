@@ -194,16 +194,16 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
                     countMeasureMSec = countMeasureMSec + 1000/samplingRate;
 
                     //残り時間表示の処理
-                    secCounter++;
-                    if (secCounter>=samplingRate) {
-                        measureSec--;
-                        secCounter = 0;
-                        if (measureSec<0) {
-                            measureMin--;
-                            measureSec = 59;
-                        }
-                        setTimeStr();
-                    }
+//                    secCounter++;
+//                    if (secCounter>=samplingRate) {
+//                        measureSec--;
+//                        secCounter = 0;
+//                        if (measureSec<0) {
+//                            measureMin--;
+//                            measureSec = 59;
+//                        }
+//                        setTimeStr();
+//                    }
                 }
             });
         }
@@ -306,5 +306,11 @@ public class MeasurementActivity extends AppCompatActivity implements View.OnTou
         intentResult.putExtra("list_id", countRecord+1);
         startActivity(intentResult);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        measurementTimer.cancel();
     }
 }

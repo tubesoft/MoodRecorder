@@ -21,6 +21,7 @@
     <string name="minute">分</string>
     <string name="second">秒</string>
     <string name="set_appropriate_time">適切な時間を設定してください。</string>
+    <string name="measuring_time">測定時間</string>
 
     <!-- 設定画面-->
     <string name="title_pref_is_tracked">軌跡の表示</string>
@@ -39,8 +40,8 @@
     <string name="saved">保存しました。</string>
 
     <!-- 測定インストラクション画面-->
-    <string name="instruction_top">あなたの気分は今どの位置にありますか？\n\n気持ちの揺れをじっくりと観察して\nその様子を指で記録してみましょう。</string>
-    <string name="instruction_bottom">測定中は指を画面から離さないでください\n開始ボタンを押すと5秒後に測定が始まります。</string>
+    <string name="instruction_top">あなたの気分は今どの位置にありますか？\n気持ちの揺れをじっくりと観察してその様子を指で記録してみましょう。</string>
+    <string name="instruction_bottom">測定中は指を画面から離さないでください\n開始ボタンを押すと3秒後に測定が始まります。</string>
 
     <!-- 履歴閲覧画面-->
     <string name="no_data">データがありません</string>

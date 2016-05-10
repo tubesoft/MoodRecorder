@@ -60,9 +60,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnToOtameshi:
-                startActivity(new Intent(this, OtameshiActivity.class));
-                break;
             case R.id.btnMeasurement:
                 //ナンバーピッカーの値を取得（両方0のときは警告）
                 if (npMin.getValue()==0 && npSec.getValue()==0){
